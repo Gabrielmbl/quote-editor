@@ -1,0 +1,8 @@
+/ app/views/quotes/show.slim
+
+main.container
+  = link_to "&larr; Back to quotes".html_safe, quotes_path
+
+  .header
+    h1
+      = @quote.name
