@@ -1,18 +1,20 @@
 # spec/factories/quotes.rb
+
 FactoryBot.define do
   factory :quote do
-    name { "Sample quote" }
-  end
-
-  factory :first_quote, parent: :quote do
+    transient do
+      company_name { "KPMG" }  # Default company name
+    end
+    
     name { "First quote" }
-  end
+    company { association :company, name: company_name }
 
-  factory :second_quote, parent: :quote do
-    name { "Second quote" }
-  end
+    trait :second do
+      name { "Second quote" }
+    end
 
-  factory :third_quote, parent: :quote do
-    name { "Third quote" }
+    trait :third do
+      name { "Third quote" }
+    end
   end
 end

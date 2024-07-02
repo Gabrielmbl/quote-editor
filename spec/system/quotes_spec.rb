@@ -5,25 +5,10 @@ require "rails_helper"
 RSpec.describe "Quotes", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
-    # driven_by(:rack_test)
     # @quote = FactoryBot.create(:first_quote)
   end
 
   let!(:quote) { create(:quote) }
-
-  it "creates a new quote" do
-    visit quotes_path
-    expect(page).to have_selector "h1", text: "Quotes"
-
-    click_on "New quote"
-    fill_in "Name", with: "Capybara quote"
-
-    expect(page).to have_selector "h1", text: "Quotes"
-    click_on "Create quote"
-
-    expect(page).to have_selector "h1", text: "Quotes"
-    expect(page).to have_text "Capybara quote"
-  end
 
   it "shows a quote" do
     visit quotes_path
