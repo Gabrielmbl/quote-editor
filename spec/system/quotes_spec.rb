@@ -2,18 +2,6 @@
 
 require "rails_helper"
 
-# RSpec.describe Quote, type: :model do
-#   it "has a valid factory" do
-#     expect(build(:quote)).to be_valid
-#   end
-
-#   # Other tests using specific factories
-#   it "creates a first quote" do
-#     first_quote = create(:first_quote)
-#     expect(first_quote.name).to eq("First quote")
-#   end
-# end
-
 RSpec.describe "Quotes", type: :system do
   before do
     driven_by(:rack_test)
