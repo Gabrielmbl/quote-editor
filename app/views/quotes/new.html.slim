@@ -1,9 +1,10 @@
 / app/views/quotes/new.html.slim
 
 main.container
-  = link_to "&larr; Back to quotes".html_safe, quotes_path
+  = link_to sanitize("&larr; Back to quotes"), quotes_path
 
   .header
     h1 New quote
 
-  = render "form", quote: @quote
+  = turbo_frame_tag @quote do
+    = render "form", quote: @quote

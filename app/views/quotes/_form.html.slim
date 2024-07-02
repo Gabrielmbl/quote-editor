@@ -1,4 +1,4 @@
-/ app/views/quotes/_form.html.slim
+-# app/views/quotes/_form.html.slim
 
 = simple_form_for quote, html: { class: "quote form" } do |f|
   - if quote.errors.any?
@@ -6,4 +6,5 @@
       = quote.errors.full_messages.to_sentence.capitalize
 
   = f.input :name, input_html: { autofocus: true }
-  = f.submit class: "btn btn--secondary"
+  = link_to "Cancel", quotes_path, class: "btn btn--light"
+  = f.submit "Save", class: "btn btn--secondary"

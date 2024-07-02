@@ -1,8 +1,14 @@
-/ app/views/quotes/index.slim
+/ app/views/quotes/index.html.erb
 
-main.container
+.main.container
   .header
     h1 Quotes
-    = link_to "New quote", new_quote_path, class: "btn btn--primary"
+    = link_to "New quote",
+              new_quote_path,
+              class: "btn btn--primary",
+              data: { turbo_frame: dom_id(Quote.new) }
 
-  = render @quotes
+  = turbo_frame_tag Quote.new
+
+  = turbo_frame_tag "quotes" do
+    = render @quotes
