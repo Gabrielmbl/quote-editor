@@ -63,8 +63,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  
-  # TODO: Rolemodel gem
+
+  gem 'rolemodel_rails', github: 'RoleModel/rolemodel_rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

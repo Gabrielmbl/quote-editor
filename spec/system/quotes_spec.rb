@@ -17,7 +17,7 @@ RSpec.describe "Quotes", type: :system do
     expect(page).to have_selector "h1", text: quote.name
   end
 
-  it "creates a new quote" do
+  it "creates a new quote", :js do
     visit quotes_path
     expect(page).to have_selector "h1", text: "Quotes"
 
@@ -31,7 +31,7 @@ RSpec.describe "Quotes", type: :system do
     expect(page).to have_text "Capybara quote"
   end
 
-  it "updates a quote" do
+  it "updates a quote", :js do
     visit quotes_path
     expect(page).to have_selector "h1", text: "Quotes"
 
