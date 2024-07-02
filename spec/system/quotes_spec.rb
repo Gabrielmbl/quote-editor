@@ -1,14 +1,17 @@
 # # spec/system/quotes_spec.rb
 
 require "rails_helper"
+include Warden::Test::Helpers
 
 RSpec.describe "Quotes", type: :system do
   before do
     driven_by(:selenium_chrome_headless)
+    @user = create(:user, company_name: "KPMG")
+    login_as @user 
     # @quote = FactoryBot.create(:first_quote)
   end
 
-  let!(:quote) { create(:quote) }
+  let!(:quote) { create(:quote, name: "Example Quote", company: @user.company) }
 
   it "shows a quote" do
     visit quotes_path

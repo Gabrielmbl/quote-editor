@@ -7,7 +7,8 @@ FactoryBot.define do
     end
     
     email { "accountant@#{company_name.downcase}.com" }
-    encrypted_password { Devise::Encryptor.digest(User, 'password') }
+    password { 'password' }  # Set a default password
+    encrypted_password { Devise::Encryptor.digest(User, password) }  # Encrypt the password
     company { association :company, name: company_name }
 
     factory :manager do

@@ -19,13 +19,17 @@ kpmg = Company.find_or_create_by(name: "KPMG")
 pwc = Company.find_or_create_by(name: "PWC")
 
 # Create users associated with companies
-# FactoryBot.create(:user, company: kpmg, email: "accountant@kpmg.com", password: 'password')
-# FactoryBot.create(:user, company: kpmg, email: "manager@kpmg.com", password: 'password')
-# FactoryBot.create(:user, company: pwc, email: "eavesdropper@pwc.com", password: 'password')
+unless User.exists?(email: "accountant@kpmg.com")
+  FactoryBot.create(:user, email: "accountant@kpmg.com", password: 'password', company: kpmg)
+end
 
-User.find_or_create_by(email: "accountant@kpmg.com", password: 'password')
-User.find_or_create_by(email: "manager@kpmg.com", password: 'password')
-User.find_or_create_by(email: "eavesdropper@pwc.com", password: 'password')
+unless User.exists?(email: "manager@kpmg.com")
+  FactoryBot.create(:user, email: "manager@kpmg.com", password: 'password', company: kpmg)
+end
+
+unless User.exists?(email: "eavesdropper@pwc.com")
+  FactoryBot.create(:user, email: "eavesdropper@pwc.com", password: 'password', company: pwc)
+end
 
 
 # # Create quotes associated with companies
