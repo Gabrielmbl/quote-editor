@@ -1,0 +1,5 @@
+/ app/views/layouts/_flash.html.slim
+
+- flash.each do |flash_type, message|
+  div.flash__message data-controller="removals" data-action="animationend->removals#remove"
+    = message
