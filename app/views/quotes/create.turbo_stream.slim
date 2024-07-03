@@ -1,6 +1,5 @@
-/ app/views/quotes/create.turbo_stream.erb
+/ app/views/quotes/create.turbo_stream.slim
 
-= turbo_stream.prepend "quotes" do
-  = render @quote
-
+= turbo_stream.prepend "quotes", @quote
 = turbo_stream.update Quote.new, ""
+= render_turbo_stream_flash_messages
