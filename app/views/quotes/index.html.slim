@@ -1,8 +1,8 @@
-/ app/views/quotes/index.html.erb
+/ app/views/quotes/index.html.slim
 
 = turbo_stream_from current_company, "quotes"
 
-.main.container
+.container
   .header
     h1 Quotes
     = link_to "New quote",
@@ -13,4 +13,5 @@
   = turbo_frame_tag Quote.new
 
   = turbo_frame_tag "quotes" do
+    = render "quotes/empty_state"
     = render @quotes
