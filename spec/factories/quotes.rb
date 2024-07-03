@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :quote do
+    name { "Default Quote" }
+    company
     transient do
       company_name { "KPMG" }  # Default company name
     end

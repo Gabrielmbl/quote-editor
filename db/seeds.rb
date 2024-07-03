@@ -28,6 +28,14 @@ unless User.exists?(email: "eavesdropper@pwc.com")
   FactoryBot.create(:user, email: "eavesdropper@pwc.com", password: 'password', company: pwc)
 end
 
+# Find or create quotes associated with companies
+first_quote = Quote.find_or_create_by(name: "First quote", company: kpmg)
+second_quote = Quote.find_or_create_by(name: "Second quote", company: kpmg)
+
+# Create line_item_dates associated with quotes
+FactoryBot.create(:line_item_date, :today, quote: first_quote)
+FactoryBot.create(:line_item_date, :next_week, quote: second_quote)
+
 
 puts "\n== Seeding the database with fixtures =="
 system("bin/rails db:fixtures:load")

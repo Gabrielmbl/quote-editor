@@ -11,6 +11,12 @@ FactoryBot.define do
     encrypted_password { Devise::Encryptor.digest(User, password) }  # Encrypt the password
     company { association :company, name: company_name }
 
+    trait :accountant do
+      email { "accountant@#{company_name.downcase}.com" }
+      encrypted_password { Devise::Encryptor.digest(User, 'password') }
+      company { association :company, name: company_name }
+    end
+
     factory :manager do
       email { "manager@#{company_name.downcase}.com" }
       encrypted_password { Devise::Encryptor.digest(User, 'password') }

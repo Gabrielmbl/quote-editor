@@ -1,9 +1,10 @@
 # # spec/system/quotes_spec.rb
 
 require "rails_helper"
-include Warden::Test::Helpers
 
 RSpec.describe "Quotes", type: :system do
+  include Warden::Test::Helpers 
+  
   before do
     driven_by(:selenium_chrome_headless)
     @user = create(:user, company_name: "KPMG")
