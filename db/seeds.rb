@@ -33,8 +33,39 @@ first_quote = Quote.find_or_create_by(name: "First quote", company: kpmg)
 second_quote = Quote.find_or_create_by(name: "Second quote", company: kpmg)
 
 # Create line_item_dates associated with quotes
-FactoryBot.create(:line_item_date, :today, quote: first_quote)
-FactoryBot.create(:line_item_date, :next_week, quote: second_quote)
+line_item_date_today = LineItemDate.find_or_create_by(date: Date.current, quote: first_quote) do |line_item_date|
+  line_item_date.quote = first_quote
+end
+
+line_item_date_next_week = LineItemDate.find_or_create_by(date: Date.current + 1.week, quote: second_quote) do |line_item_date|
+  line_item_date.quote = second_quote
+end
+
+
+# Create line_items associated with line_item_dates
+LineItem.find_or_create_by(line_item_date: line_item_date_today, name: "Meeting room") do |line_item|
+  line_item.description = "A cosy meeting room for 10 people"
+  line_item.quantity = 1
+  line_item.unit_price = 1000
+end
+
+LineItem.find_or_create_by(line_item_date: line_item_date_today, name: "Meal tray") do |line_item|
+  line_item.description = "Our delicious meal tray"
+  line_item.quantity = 10
+  line_item.unit_price = 25
+end
+
+LineItem.find_or_create_by(line_item_date: line_item_date_next_week, name: "Meeting room") do |line_item|
+  line_item.description = "A cosy meeting room for 10 people"
+  line_item.quantity = 1
+  line_item.unit_price = 1000
+end
+
+LineItem.find_or_create_by(line_item_date: line_item_date_next_week, name: "Meal tray") do |line_item|
+  line_item.description = "Our delicious meal tray"
+  line_item.quantity = 10
+  line_item.unit_price = 25
+end
 
 
 puts "\n== Seeding the database with fixtures =="
