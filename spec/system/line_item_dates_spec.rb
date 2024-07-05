@@ -11,7 +11,7 @@ RSpec.describe 'LineItemDates', type: :system do
 
     @quote = create(:quote, :first, company: @user.company)
     @line_item_date = create(:line_item_date, :today, quote: @quote)
-
+    
     visit quote_path(@quote)
   end
 
