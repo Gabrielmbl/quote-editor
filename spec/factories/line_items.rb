@@ -37,20 +37,3 @@ FactoryBot.define do
     end
   end
 end
-
-
-
-# # Example usage in a test
-# RSpec.describe 'LineItems', type: :model do
-#   it 'creates a room for today' do
-#     line_item = create(:room_today)
-#     expect(line_item.line_item_date.date).to eq(Date.current)
-#     expect(line_item.name).to eq('Meeting room')
-#   end
-
-#   it 'creates catering for next week' do
-#     line_item = create(:catering_next_week)
-#     expect(line_item.line_item_date.date).to eq(Date.current + 1.week)
-#     expect(line_item.name).to eq('Meal tray')
-#   end
-# end
